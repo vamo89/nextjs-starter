@@ -53,7 +53,7 @@ const Home: NextPage<Props> = (props: Props) => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Bem vindo!!</h1>
+        <h1 className={styles.title}>Bem vindo!</h1>
 
         <p className={styles.description}>A primeira loja de comida virtual</p>
 
@@ -62,7 +62,7 @@ const Home: NextPage<Props> = (props: Props) => {
             return (
               <a
                 key={category.name}
-                href={`/${category.slug}`}
+                href={`/categories/${category.slug}`}
                 className={styles.card}
               >
                 <Image
