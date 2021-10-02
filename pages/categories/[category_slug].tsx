@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import { GetServerSidePropsContext } from "next";
+import { GetStaticPropsContext } from "next";
 
 type Product = {
   title: string;
@@ -25,8 +25,34 @@ type Props = {
   category: string;
 };
 
-export async function getServerSideProps(
-  context: GetServerSidePropsContext<{ category_slug: string }>
+export async function getStaticPaths() {
+  const client = new ApolloClient({
+    uri: "https://whispering-stream-54419.herokuapp.com/graphql",
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`
+      query Categories {
+        categories {
+          slug
+        }
+      }
+    `,
+  });
+
+  const paths = data.categories.map(
+    (category: { slug: string }) => `/categories/${category.slug}`
+  );
+
+  return {
+    paths: paths,
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps(
+  context: GetStaticPropsContext<{ category_slug: string }>
 ) {
   const client = new ApolloClient({
     uri: "https://whispering-stream-54419.herokuapp.com/graphql",
