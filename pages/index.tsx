@@ -4,6 +4,14 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
+type Props = {
+  categories: [
+    {
+      name: string;
+    }
+  ];
+};
+
 export async function getStaticProps() {
   const client = new ApolloClient({
     uri: "https://whispering-stream-54419.herokuapp.com/graphql",
@@ -27,7 +35,7 @@ export async function getStaticProps() {
   };
 }
 
-const Home: NextPage = (props: { categories: any }) => {
+const Home: NextPage<Props> = (props: Props) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -42,7 +50,7 @@ const Home: NextPage = (props: { categories: any }) => {
         <p className={styles.description}>Comida de verdade!</p>
 
         <div className={styles.grid}>
-          {props.categories.map((category: any) => {
+          {props.categories.map((category) => {
             return (
               <a
                 key={category.name}
