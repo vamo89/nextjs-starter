@@ -19,8 +19,27 @@ type Props = {
 };
 
 export async function getStaticPaths() {
+  const client = new ApolloClient({
+    uri: "https://whispering-stream-54419.herokuapp.com/graphql",
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`
+      query DistributionCenters {
+        distributionCenters {
+          slug
+        }
+      }
+    `,
+  });
+
+  const paths = data.distributionCenters.map(
+    (distributionCenter: { slug: string }) => `/${distributionCenter.slug}`
+  );
+
   return {
-    paths: ["/sp", "/bh", "/rj"],
+    paths,
     fallback: false,
   };
 }
@@ -35,8 +54,8 @@ export async function getStaticProps(
 
   const { data } = await client.query({
     query: gql`
-      query Categories {
-        categories {
+      query Categories($dc_slug: String) {
+        categories(where: { distribution_centers: { slug: $dc_slug } }) {
           name
           slug
           image {
@@ -45,6 +64,9 @@ export async function getStaticProps(
         }
       }
     `,
+    variables: {
+      dc_slug: context.params!.distribution_center,
+    },
   });
 
   return {
