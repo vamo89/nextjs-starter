@@ -84,7 +84,7 @@ const ProductPage: NextPage<Props> = (props: Props) => {
 
       <div>
         <Image
-          src={`https://whispering-stream-54419.herokuapp.com${props.product.image.url}`}
+          src={`${props.product.image.url}`}
           alt={`Foto do produto ${props.product.title}`}
           width={310}
           height={200}

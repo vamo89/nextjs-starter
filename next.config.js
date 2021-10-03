@@ -2,6 +2,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["whispering-stream-54419.herokuapp.com"],
+    domains: ["whispering-stream-54419.herokuapp.com", "res.cloudinary.com"],
   },
 };

@@ -120,7 +120,7 @@ const CategoryPage: NextPage<Props> = (props: Props) => {
               className={styles.card}
             >
               <Image
-                src={`https://whispering-stream-54419.herokuapp.com${product.image.url}`}
+                src={`${product.image.url}`}
                 alt={`Foto do produto ${product.title}`}
                 width={310}
                 height={200}
