@@ -1,6 +1,6 @@
 import type { GetServerSidePropsContext, NextPage } from "next";
-import findDistributionCenterByLocation from "./helpers/findDistributionCenterByLocation";
-import findLocationByIp from "./helpers/findLocationByIp";
+import findDistributionCenterByLocation from "../helpers/findDistributionCenterByLocation";
+import findLocationByIp from "../helpers/findLocationByIp";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (context.req.headers.host) {
