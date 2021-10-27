@@ -15,8 +15,9 @@ export default function middleware(request: NextRequest) {
       request.geo.region &&
       acceptedRegions.includes(request.geo.region.toLowerCase())
     ) {
-      // TODO: add cookie
-      response = NextResponse.rewrite(`/${request.geo.region.toLowerCase()}`);
+      const new_dc = request.geo.region.toLowerCase();
+      response.cookie("distribution_center", new_dc);
+      response = NextResponse.rewrite(`/${new_dc}`);
     } else {
       response = NextResponse.rewrite(`/sp`);
     }
