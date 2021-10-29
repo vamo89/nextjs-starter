@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticPropsContext } from "next";
+import { Header } from "../components/Header";
 
 type Props = {
   categories: [
@@ -84,6 +85,11 @@ const Home: NextPage<Props> = (props: Props) => {
       <Head>
         <title>Comida Virtual</title>
       </Head>
+      <Header
+        onLogin={() => {}}
+        onLogout={() => {}}
+        onCreateAccount={() => {}}
+      />
       <main className={styles.main}>
         <h1 className={styles.title}>Bem vindo!</h1>
 
