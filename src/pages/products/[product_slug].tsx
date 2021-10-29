@@ -3,6 +3,8 @@ import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticPropsContext } from "next";
+import React from "react";
+import Head from "next/head";
 
 type Product = {
   title: string;
@@ -80,6 +82,9 @@ export async function getStaticProps(
 const ProductPage: NextPage<Props> = (props: Props) => {
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Comida Virtual - Produto {props.product.title}</title>
+      </Head>
       <h1 className={styles.title}>Produto {props.product.title}</h1>
 
       <div>

@@ -82,12 +82,8 @@ const Home: NextPage<Props> = (props: Props) => {
   return (
     <div className={styles.container}>
       <Head>
-        <html lang="pt-BR" />
         <title>Comida Virtual</title>
-        <meta name="description" content="Sua loja de comida virtual" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main className={styles.main}>
         <h1 className={styles.title}>Bem vindo!</h1>
 
