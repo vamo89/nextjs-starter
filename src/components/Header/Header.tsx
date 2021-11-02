@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button } from "./Button";
+import { Button } from "../Button";
 import { HeaderWrapper, Logo, HeaderTitle } from "./header.styles";
 
 interface HeaderProps {

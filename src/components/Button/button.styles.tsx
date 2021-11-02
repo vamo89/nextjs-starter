@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ThemeType } from "../common/types/theme";
+import { ThemeType } from "../../common/types/theme";
 
 type StyledButtonProps = {
   primary: boolean;
