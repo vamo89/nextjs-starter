@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
-import findDistributionCenterByLocation from "../helpers/findDistributionCenterByLocation";
-import findLocationByIp from "../helpers/findLocationByIp";
+import findDistributionCenterByLocation from "../common/helpers/findDistributionCenterByLocation";
+import findLocationByIp from "../common/helpers/findLocationByIp";
 
 const acceptedRegions = ["mg", "sp", "rj"];
 
