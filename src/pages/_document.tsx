@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="pt-BR">
         <Head>
           <meta name="description" content="Sua loja de comida virtual" />
           <link rel="icon" href="/favicon.ico" />

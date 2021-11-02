@@ -83,7 +83,7 @@ const Home: NextPage<Props> = (props: Props) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Comida Virtual</title>
+        <title>Comida Virtual {props.distributionCenter}</title>
       </Head>
       <Header
         onLogin={() => {}}
