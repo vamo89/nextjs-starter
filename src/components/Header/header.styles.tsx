@@ -19,11 +19,6 @@ export const HeaderWrapper = styled.div`
   }
 `;
 
-export const Logo = styled.svg`
-  display: inline-block;
-  vertical-align: top;
-`;
-
 export const HeaderTitle = styled.h1`
   font-weight: 900;
   font-size: 20px;
