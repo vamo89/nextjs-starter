@@ -5,6 +5,8 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticPropsContext } from "next";
 import React from "react";
 import Head from "next/head";
+import { useRouter } from "next/dist/client/router";
+import { Loading } from "../../components/Loading";
 
 type Product = {
   title: string;
@@ -49,7 +51,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: true,
   };
 }
 
@@ -109,6 +111,11 @@ export async function getStaticProps(
 }
 
 const CategoryPage: NextPage<Props> = (props: Props) => {
+  const { isFallback } = useRouter();
+
+  if (isFallback) {
+    return <Loading />;
+  }
   return (
     <div className={styles.main}>
       <Head>
