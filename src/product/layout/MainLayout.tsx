@@ -35,10 +35,10 @@ const MainLayout: NextPage = ({ children }) => {
       <Header
         onLogin={() => {}}
         onLogout={() => {}}
-        onSacola={() => {}}
-        onCreateAccount={() => {
+        onSacola={() => {
           router.push("/sacola");
         }}
+        onCreateAccount={() => {}}
       />
       <Main>{children}</Main>
 
