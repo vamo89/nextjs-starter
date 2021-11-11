@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import { Description, Title } from "../components";
+import { CheckoutPage } from "../modules/checkout";
 import MainLayout from "../product/layout/MainLayout";
 
 const Sacola: NextPage = () => {
@@ -11,8 +11,7 @@ const Sacola: NextPage = () => {
         <title>Comida Virtual - Sua Sacola</title>
       </Head>
 
-      <Title text="Sacola" />
-      <Description text="Sacola" />
+      <CheckoutPage />
     </MainLayout>
   );
 };
