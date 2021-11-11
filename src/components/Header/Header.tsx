@@ -8,6 +8,7 @@ interface HeaderProps {
   user?: {};
   onLogin: () => void;
   onLogout: () => void;
+  onSacola: () => void;
   onCreateAccount: () => void;
 }
 
@@ -15,6 +16,7 @@ export const Header = ({
   user,
   onLogin,
   onLogout,
+  onSacola,
   onCreateAccount,
 }: HeaderProps) => (
   <header>
@@ -28,6 +30,7 @@ export const Header = ({
           <Button size="small" onClick={onLogout} label="Log out" />
         ) : (
           <>
+            <Button size="small" onClick={onSacola} label="Sacola" />
             <Button size="small" onClick={onLogin} label="Log in" />
             <Button
               primary
