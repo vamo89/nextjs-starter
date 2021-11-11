@@ -1,11 +1,17 @@
 import React from "react";
+import styled from "styled-components";
 
 import { Button } from "../Button";
 import { Logo } from "../Logo";
 import { HeaderWrapper, HeaderTitle } from "./header.styles";
 
+const Clickable = styled.div`
+  cursor: pointer;
+`;
+
 interface HeaderProps {
   user?: {};
+  onLogo: () => void;
   onLogin: () => void;
   onLogout: () => void;
   onSacola: () => void;
@@ -14,6 +20,7 @@ interface HeaderProps {
 
 export const Header = ({
   user,
+  onLogo,
   onLogin,
   onLogout,
   onSacola,
@@ -21,10 +28,10 @@ export const Header = ({
 }: HeaderProps) => (
   <header>
     <HeaderWrapper>
-      <div>
+      <Clickable onClick={onLogo}>
         <Logo />
         <HeaderTitle>Acme</HeaderTitle>
-      </div>
+      </Clickable>
       <div>
         {user ? (
           <Button size="small" onClick={onLogout} label="Log out" />

@@ -33,6 +33,9 @@ const MainLayout: NextPage = ({ children }) => {
         <title>Comida Virtual</title>
       </Head>
       <Header
+        onLogo={() => {
+          router.push("/");
+        }}
         onLogin={() => {}}
         onLogout={() => {}}
         onSacola={() => {
