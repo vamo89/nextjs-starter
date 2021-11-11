@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import styles from "../../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticPropsContext } from "next";
 import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/dist/client/router";
-import { Loading } from "../../components/Loading";
+import MainLayout from "../../product/layout/MainLayout";
+import { Loading, Title } from "../../components";
 
 type Product = {
   title: string;
@@ -89,11 +89,11 @@ const ProductPage: NextPage<Props> = (props: Props) => {
   }
 
   return (
-    <div className={styles.container}>
+    <MainLayout>
       <Head>
         <title>Comida Virtual - Produto {props.product.title}</title>
       </Head>
-      <h1 className={styles.title}>Produto {props.product.title}</h1>
+      <Title text={`Produto ${props.product.title}`} />
 
       <div>
         <Image
@@ -107,7 +107,7 @@ const ProductPage: NextPage<Props> = (props: Props) => {
           R${props.product.price} - {props.product.description}
         </p>
       </div>
-    </div>
+    </MainLayout>
   );
 };
 

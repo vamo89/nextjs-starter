@@ -1,10 +1,11 @@
+import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticPropsContext } from "next";
-import { Header } from "../components/Header";
+import MainLayout from "../product/layout/MainLayout";
+import { Title, Card, Description, Grid } from "../components";
 
 type Props = {
   categories: [
@@ -81,57 +82,33 @@ export async function getStaticProps(
 
 const Home: NextPage<Props> = (props: Props) => {
   return (
-    <div className={styles.container}>
+    <MainLayout>
       <Head>
         <title>Comida Virtual {props.distributionCenter}</title>
       </Head>
-      <Header
-        onLogin={() => {}}
-        onLogout={() => {}}
-        onCreateAccount={() => {}}
+      <Title text="Bem vindo!" />
+
+      <Description
+        text={`A primeira loja de comida virtual de ${props.distributionCenter}`}
       />
-      <main className={styles.main}>
-        <h1 className={styles.title}>Bem vindo!</h1>
 
-        <p className={styles.description}>
-          A primeira loja de comida virtual de {props.distributionCenter}
-        </p>
-
-        <div className={styles.grid}>
-          {props.categories.map((category) => {
-            return (
-              <a
-                key={category.name}
-                href={`/categories/${category.slug}`}
-                className={styles.card}
-              >
-                <Image
-                  src={`${category.image.url}`}
-                  alt={`Foto da categoria ${category.name}`}
-                  width={310}
-                  height={200}
-                />
-                <h2>{category.name}</h2>
-                <p>Esta é a categoria de {category.name}</p>
-              </a>
-            );
-          })}
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
+      <Grid>
+        {props.categories.map((category) => {
+          return (
+            <Card key={category.name} href={`/categories/${category.slug}`}>
+              <Image
+                src={`${category.image.url}`}
+                alt={`Foto da categoria ${category.name}`}
+                width={310}
+                height={200}
+              />
+              <h2>{category.name}</h2>
+              <p>Esta é a categoria de {category.name}</p>
+            </Card>
+          );
+        })}
+      </Grid>
+    </MainLayout>
   );
 };
 

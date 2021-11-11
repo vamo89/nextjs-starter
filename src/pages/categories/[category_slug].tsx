@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import styles from "../../styles/Home.module.css";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticPropsContext } from "next";
 import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/dist/client/router";
-import { Loading } from "../../components/Loading";
+import MainLayout from "../../product/layout/MainLayout";
+import { Card, Title, Loading, Grid } from "../../components";
 
 type Product = {
   title: string;
@@ -117,20 +117,16 @@ const CategoryPage: NextPage<Props> = (props: Props) => {
     return <Loading />;
   }
   return (
-    <div className={styles.main}>
+    <MainLayout>
       <Head>
         <title>Comida Virtual - Produto {props.category}</title>
       </Head>
-      <h1 className={styles.title}>Categoria {props.category}</h1>
+      <Title text={`Categoria ${props.category}`} />
 
-      <div className={styles.grid}>
+      <Grid>
         {props.products?.map((product) => {
           return (
-            <a
-              key={product.title}
-              href={`/products/${product.slug}`}
-              className={styles.card}
-            >
+            <Card key={product.title} href={`/products/${product.slug}`}>
               <Image
                 src={`${product.image.url}`}
                 alt={`Foto do produto ${product.title}`}
@@ -141,11 +137,11 @@ const CategoryPage: NextPage<Props> = (props: Props) => {
               <p>
                 R${product.price} - {product.description}
               </p>
-            </a>
+            </Card>
           );
         })}
-      </div>
-    </div>
+      </Grid>
+    </MainLayout>
   );
 };
 
